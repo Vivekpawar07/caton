@@ -5,13 +5,37 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply capitalize bg-custom_bg
+  background-color: theme('colors.custom_bg'); /* Apply your custom background color directly */
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hover text container */
+.hover-text-container {
+  position: relative;
+}
+
+/* Initial state of the text - hidden */
+.text-wrapper {
+  overflow: hidden;
+  height: 100%; /* Adjust as necessary */
+}
+
+.hover-text {
+  position: relative;
+  transform: translateY(100%); /* Starts out of view */
+  opacity: 0; /* Hidden initially */
+  transition: transform 0.6s ease, opacity 0.6s ease; /* Animation settings */
+}
+
+/* When hovering over the parent container */
+.hover-text-container:hover .hover-text {
+  transform: translateY(0); /* Slides up into view */
+  opacity: 1; /* Becomes visible */
+}
